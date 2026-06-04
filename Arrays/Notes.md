@@ -43,3 +43,27 @@ O(n)
 ### Space Complexity
 O(1)
 
+## Smallest Element in Array
+
+### Problem
+Find the minimum element present in an array.
+
+### Approach
+- Initialize smallest with Integer.MAX_VALUE.
+- Traverse the array.
+- If current element is smaller than smallest, update smallest.
+- Return smallest after traversal.
+
+### Example
+
+Input:
+[1, 3, 5, 8, 4, 6]
+
+Output:
+1
+
+### Time Complexity
+O(n)
+
+### Space Complexity
+O(1)
