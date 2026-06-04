@@ -150,3 +150,70 @@ Output:
 ### Key Takeaway
 
 Binary Search is efficient because it reduces the search space by half in every iteration. It should be used whenever the array is sorted.
+
+
+
+# REVERSE ARRAY 
+
+## Problem
+
+Reverse the elements of an array without using an extra array.
+
+## Approach
+
+Use two pointers:
+
+* `first` starts from the beginning of the array.
+* `last` starts from the end of the array.
+
+Swap the elements at both pointers and move them toward the center until they meet.
+
+## Pseudocode
+
+START
+
+FUNCTION reverse(arr)
+
+```
+first ← 0
+last ← length(arr) - 1
+
+WHILE first < last
+
+    temp ← arr[last]
+    arr[last] ← arr[first]
+    arr[first] ← temp
+
+    first ← first + 1
+    last ← last - 1
+
+END WHILE
+```
+
+END FUNCTION
+
+STOP
+
+## Dry Run
+
+Input:
+[2, 4, 6, 8, 10]
+
+Step 1:
+Swap 2 and 10
+[10, 4, 6, 8, 2]
+
+Step 2:
+Swap 4 and 8
+[10, 8, 6, 4, 2]
+
+Output:
+[10, 8, 6, 4, 2]
+
+## Time Complexity
+
+O(n)
+
+## Space Complexity
+
+O(1)
