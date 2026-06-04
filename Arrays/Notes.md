@@ -285,3 +285,95 @@ Space Complexity: O(1)
 ## Key Learning
 
 This problem introduces nested loops and demonstrates how combinations of elements can be generated without repetition. It is a common foundation for many brute-force DSA problems.
+
+
+
+//SUBARRAYS
+# Print All Subarrays of an Array 
+
+## Problem
+
+Print all possible contiguous subarrays of a given array and count the total number of subarrays.
+
+## What is a Subarray?
+
+A subarray is a contiguous part of an array.
+
+Example:
+
+Array:
+[2, 4, 6]
+
+Subarrays:
+[2]
+[2, 4]
+[2, 4, 6]
+[4]
+[4, 6]
+[6]
+
+## Approach
+
+Three nested loops are used:
+
+1. The first loop selects the starting index.
+2. The second loop selects the ending index.
+3. The third loop prints all elements between the start and end indices.
+
+This generates every possible contiguous subarray.
+
+## Dry Run
+
+Input:
+[2, 4, 6]
+
+Start = 0
+
+[2]
+[2, 4]
+[2, 4, 6]
+
+Start = 1
+
+[4]
+[4, 6]
+
+Start = 2
+
+[6]
+
+Total Subarrays = 6
+
+## Formula
+
+For an array of size n:
+
+Total Subarrays = n × (n + 1) / 2
+
+Example:
+
+n = 5
+
+Total Subarrays = 5 × 6 / 2 = 15
+
+## Complexity Analysis
+
+Time Complexity: O(n³)
+
+* First loop chooses the start index.
+* Second loop chooses the end index.
+* Third loop prints elements from Start to end  of the subarray.
+
+Space Complexity: O(1)
+
+## Key Learning
+
+This problem helps understand:
+
+* Arrays
+* Nested Loops
+* Start and End Index Concepts
+* Subarrays vs Subsequences
+* Brute Force Approach
+
+Understanding subarray generation is important because many DSA problems such as Maximum Subarray Sum, Kadane's Algorithm, and Sliding Window techniques are built on this concept.
