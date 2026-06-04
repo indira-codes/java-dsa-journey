@@ -217,3 +217,71 @@ O(n)
 ## Space Complexity
 
 O(1)
+
+
+6.# Print All Pairs in an Array
+
+## Problem
+
+Print all possible unique pairs of elements present in an array.
+
+## Approach
+
+Use two nested loops:
+
+* The outer loop selects the first element of the pair.
+* The inner loop selects the remaining elements after the current element.
+* This ensures that no pair is repeated.
+
+## Example
+
+Input:
+[2, 4, 6, 8, 10]
+
+Output:
+(2,4) (2,6) (2,8) (2,10)
+(4,6) (4,8) (4,10)
+(6,8) (6,10)
+(8,10)
+
+## Dry Run
+
+For i = 0 (2):
+
+* (2,4)
+* (2,6)
+* (2,8)
+* (2,10)
+
+For i = 1 (4):
+
+* (4,6)
+* (4,8)
+* (4,10)
+
+And so on...
+
+## Formula for Total Pairs
+
+For an array of size n:
+
+Total Pairs = n × (n - 1) / 2
+
+Example:
+n = 5
+
+Total Pairs = 5 × 4 / 2 = 10
+
+## Complexity Analysis
+
+Time Complexity: O(n²)
+
+* Nested loops are used.
+
+Space Complexity: O(1)
+
+* No extra data structure is used.
+
+## Key Learning
+
+This problem introduces nested loops and demonstrates how combinations of elements can be generated without repetition. It is a common foundation for many brute-force DSA problems.
