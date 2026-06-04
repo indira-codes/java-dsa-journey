@@ -67,3 +67,86 @@ O(n)
 
 ### Space Complexity
 O(1)
+
+## Binary Search
+
+### Problem
+
+Search for a target element in a sorted array.
+
+### Prerequisite
+
+The array must be sorted in ascending or descending order.
+
+### Idea
+
+Binary Search repeatedly checks the middle element and eliminates half of the remaining search space.
+
+Instead of searching every element one by one, it divides the search range into two halves, making it much faster than Linear Search.
+
+### Algorithm
+
+1. Initialize `start = 0` and `end = n - 1`.
+2. Find the middle index:
+   `mid = (start + end) / 2`
+3. If `arr[mid] == key`, return `mid`.
+4. If `key < arr[mid]`, search in the left half.
+5. If `key > arr[mid]`, search in the right half.
+6. Repeat until the element is found or `start > end`.
+7. If not found, return `-1`.
+
+### Pseudocode
+
+```text
+BinarySearch(arr, key)
+
+start = 0
+end = arr.length - 1
+
+while start <= end
+    mid = (start + end) / 2
+
+    if arr[mid] == key
+        return mid
+
+    else if key < arr[mid]
+        end = mid - 1
+
+    else
+        start = mid + 1
+
+return -1
+```
+
+### Example
+
+Input:
+[2, 4, 6, 8, 10, 12, 14]
+
+Key:
+12
+
+Output:
+5
+
+### Time Complexity
+
+* Best Case: O(1)
+* Average Case: O(log n)
+* Worst Case: O(log n)
+
+### Space Complexity
+
+* O(1)
+
+### Comparison with Linear Search
+
+| Feature               | Linear Search | Binary Search      |
+| --------------------- | ------------- | ------------------ |
+| Array Sorted Required | No            | Yes                |
+| Time Complexity       | O(n)          | O(log n)           |
+| Search Method         | One by One    | Divide and Conquer |
+
+### Key Takeaway
+
+Binary Search is efficient because it reduces the search space by half in every iteration. It should be used whenever the array is sorted.
