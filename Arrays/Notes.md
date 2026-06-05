@@ -750,3 +750,62 @@ Reason:
 Negative sums are always reset to zero.
 
 This limitation is fixed in Improved Kadane's Algorithm.
+
+***********
+# Enhanced Kadane's Algorithm
+
+## Core Idea
+
+At every index:
+
+- Start a new subarray from the current element.
+- OR continue the previous subarray.
+
+Choose the option that gives a larger sum.
+
+Formula:
+
+currentSum = max(arr[i], currentSum + arr[i])
+
+maxSum = max(maxSum, currentSum)
+
+---
+
+## Why It Works
+
+A negative running sum may reduce future results.
+
+Instead of blindly resetting to 0, we compare:
+
+1. Current element alone
+2. Current element + previous subarray
+
+and choose the better option.
+
+---
+
+## Advantages
+
+✔ Handles mixed positive-negative arrays
+
+✔ Handles all-negative arrays
+
+✔ Handles all-positive arrays
+
+✔ Handles single-element arrays
+
+---
+
+## Complexity
+
+Time Complexity: O(n)
+
+Space Complexity: O(1)
+
+---
+
+## Interview One-Liner
+
+Kadane's Algorithm finds the maximum subarray sum in linear time 
+by deciding at every index whether to start a new subarray or extend 
+the previous one.
