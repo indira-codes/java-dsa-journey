@@ -809,3 +809,160 @@ Space Complexity: O(1)
 Kadane's Algorithm finds the maximum subarray sum in linear time 
 by deciding at every index whether to start a new subarray or extend 
 the previous one.
+
+*******
+# Trapping Rain Water
+
+## Problem
+
+Given an array representing the height of bars, find the total amount of rainwater trapped between them.
+
+### Example
+
+```java
+height = {4, 2, 0, 6, 3, 2, 5}
+```
+
+Output:
+
+```java
+11
+```
+
+---
+
+## Approach
+
+For each index, the amount of water that can be stored depends on:
+
+* Maximum height on its left side.
+* Maximum height on its right side.
+
+### Formula
+
+```text
+Water Level = min(LeftMax, RightMax)
+
+Trapped Water = Water Level - Current Height
+```
+
+To efficiently find left and right maximum heights, use two auxiliary arrays:
+
+* `leftMax[]` → Stores the maximum height from the left up to the current index.
+* `rightMax[]` → Stores the maximum height from the right up to the current index.
+
+---
+
+## Algorithm
+
+### Step 1: Build Left Max Array
+
+```text
+leftMax[i] = max(height[i], leftMax[i-1])
+```
+
+### Step 2: Build Right Max Array
+
+```text
+rightMax[i] = max(height[i], rightMax[i+1])
+```
+
+### Step 3: Calculate Trapped Water
+
+For every index:
+
+```text
+waterLevel = min(leftMax[i], rightMax[i])
+
+trappedWater += waterLevel - height[i]
+```
+
+---
+
+## Pseudocode
+
+```text
+function trappedRainwater(height):
+
+    n = length of height
+
+    create leftMax[n]
+    leftMax[0] = height[0]
+
+    for i = 1 to n-1
+        leftMax[i] = max(height[i], leftMax[i-1])
+
+    create rightMax[n]
+    rightMax[n-1] = height[n-1]
+
+    for i = n-2 to 0
+        rightMax[i] = max(height[i], rightMax[i+1])
+
+    trappedWater = 0
+
+    for i = 0 to n-1
+        waterLevel = min(leftMax[i], rightMax[i])
+        trappedWater += waterLevel - height[i]
+
+    return trappedWater
+```
+
+---
+
+## Dry Run
+
+```java
+height   = [4,2,0,6,3,2,5]
+leftMax  = [4,4,4,6,6,6,6]
+rightMax = [6,6,6,6,5,5,5]
+```
+
+| Index | Water Stored |
+| ----- | ------------ |
+| 0     | 0            |
+| 1     | 2            |
+| 2     | 4            |
+| 3     | 0            |
+| 4     | 2            |
+| 5     | 3            |
+| 6     | 0            |
+
+```text
+Total Water = 11
+```
+
+---
+
+## Complexity Analysis
+
+### Time Complexity
+
+```text
+O(n)
+```
+
+* One traversal for `leftMax`
+* One traversal for `rightMax`
+* One traversal for water calculation
+
+### Space Complexity
+
+```text
+O(n)
+```
+
+Extra auxiliary arrays used:
+
+```java
+leftMax[]
+rightMax[]
+```
+
+---
+
+## Key Learning
+
+* Water trapped at an index depends on both left and right boundaries.
+* Use auxiliary arrays to precompute maximum heights.
+* Water Level = `min(leftMax, rightMax)`.
+* Overall optimized solution runs in `O(n)` time.
