@@ -377,3 +377,152 @@ This problem helps understand:
 * Brute Force Approach
 
 Understanding subarray generation is important because many DSA problems such as Maximum Subarray Sum, Kadane's Algorithm, and Sliding Window techniques are built on this concept.
+
+
+
+# Maximum Subarray Sum - Brute Force Approach
+
+## Problem Statement
+
+Given an integer array, find the maximum possible sum among all contiguous subarrays.
+
+Example:
+
+Input:
+[1, -2, 6, -1, 3]
+
+Possible Subarrays:
+[1]
+[1, -2]
+[1, -2, 6]
+...
+[6, -1, 3]
+
+Maximum Sum = 8
+
+## Intuition
+
+To find the maximum subarray sum, we first need to examine every possible subarray.
+
+A subarray is defined by:
+
+* A starting index
+* An ending index
+
+For each possible pair of start and end indices:
+
+1. Generate the subarray.
+2. Calculate its sum.
+3. Compare the sum with the maximum sum found so far.
+4. Update the maximum sum if the current sum is larger.
+
+Since we are checking every possible subarray and calculating its sum separately, this is called the Brute Force Approach.
+
+## Understanding the Three Loops
+
+### Loop 1: Choose Starting Index
+
+The outer loop fixes the starting point of the subarray.
+
+Example:
+
+start = 0 → [1], [1,-2], [1,-2,6], ...
+start = 1 → [-2], [-2,6], ...
+start = 2 → [6], [6,-1], ...
+
+This loop decides where a subarray begins.
+
+### Loop 2: Choose Ending Index
+
+For each starting index, the second loop selects all possible ending indices.
+
+Example:
+
+start = 0
+
+end = 0 → [1]
+end = 1 → [1,-2]
+end = 2 → [1,-2,6]
+end = 3 → [1,-2,6,-1]
+
+This loop decides where a subarray ends.
+
+### Loop 3: Traverse the Subarray
+
+Once start and end are fixed, the third loop visits every element inside that subarray.
+
+Example:
+
+start = 0
+end = 2
+
+Subarray = [1,-2,6]
+
+sum = 1 + (-2) + 6 = 5
+
+This loop calculates the current subarray sum.
+
+## Pseudocode
+
+Initialize maxSum = -∞
+
+For each start index i
+
+```
+For each end index j
+
+    currentSum = 0
+
+    For each element k from i to j
+
+        currentSum += arr[k]
+
+    If currentSum > maxSum
+
+        maxSum = currentSum
+```
+
+Print maxSum
+
+## Dry Run
+
+Array:
+
+[1, -2, 6, -1, 3]
+
+Subarrays and Sums:
+
+[1]            → 1
+[1,-2]         → -1
+[1,-2,6]       → 5
+[1,-2,6,-1]    → 4
+[1,-2,6,-1,3]  → 7
+
+[-2]           → -2
+[-2,6]         → 4
+[-2,6,-1]      → 3
+[-2,6,-1,3]    → 6
+
+[6]            → 6
+[6,-1]         → 5
+[6,-1,3]       → 8   ← Maximum
+
+Maximum Subarray Sum = 8
+
+## Complexity Analysis
+
+Number of subarrays:
+
+n × (n + 1) / 2
+
+For every subarray, we traverse its elements again.
+
+Therefore:
+
+Time Complexity = O(n³)
+
+Space Complexity = O(1)
+
+## Interview Explanation (30 Seconds)
+
+"I use the brute-force approach where I generate every possible subarray using two loops for start and end indices. Then a third loop calculates the sum of the current subarray. After computing each sum, I compare it with the maximum sum found so far and update it if necessary. Since every subarray is generated and traversed, the time complexity is O(n³) and the space complexity is O(1)."
