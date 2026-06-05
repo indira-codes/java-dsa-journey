@@ -526,3 +526,127 @@ Space Complexity = O(1)
 ## Interview Explanation (30 Seconds)
 
 "I use the brute-force approach where I generate every possible subarray using two loops for start and end indices. Then a third loop calculates the sum of the current subarray. After computing each sum, I compare it with the maximum sum found so far and update it if necessary. Since every subarray is generated and traversed, the time complexity is O(n³) and the space complexity is O(1)."
+
+
+********
+# Maximum Subarray Sum using Prefix Sum
+
+## Goal
+
+Find the maximum sum among all possible contiguous subarrays.
+
+Example:
+
+Input:
+[1, -2, 6, -1, 3]
+
+Maximum Subarray Sum:
+8
+
+Subarray:
+[6, -1, 3]
+
+---
+
+## Intuition
+
+In the brute-force approach, every subarray sum is calculated by traversing its elements again and again.
+
+This results in:
+
+Time Complexity = O(n³)
+
+To optimize this, we use Prefix Sum.
+
+A Prefix Array stores cumulative sums:
+
+prefix[i] = sum of elements from index 0 to i
+
+Example:
+
+Array:
+[1, -2, 6, -1, 3]
+
+Prefix:
+[1, -1, 5, 4, 7]
+
+---
+
+## Prefix Sum Formula
+
+For any subarray:
+
+start → beginning index
+end → ending index
+
+If start == 0:
+
+currSum = prefix[end]
+
+Otherwise:
+
+currSum = prefix[end] - prefix[start - 1]
+
+This gives the subarray sum in O(1) time.
+
+---
+
+## Algorithm
+
+1. Create a Prefix Array.
+2. Store cumulative sums in Prefix Array.
+3. Generate all possible start indices.
+4. Generate all possible end indices.
+5. Calculate subarray sum using Prefix Sum formula.
+6. Update maxSum whenever a larger sum is found.
+7. Print maxSum.
+
+---
+
+## Pseudocode
+
+Create prefix array
+
+prefix[0] = arr[0]
+
+For i from 1 to n-1
+prefix[i] = prefix[i-1] + arr[i]
+
+maxSum = -∞
+
+For each start index
+
+```
+For each end index
+
+    If start == 0
+        currSum = prefix[end]
+    Else
+        currSum = prefix[end] - prefix[start-1]
+
+    maxSum = max(maxSum, currSum)
+```
+
+Print maxSum
+
+---
+
+## Complexity Analysis
+
+Brute Force:
+Time Complexity = O(n³)
+Space Complexity = O(1)
+
+Prefix Sum:
+Time Complexity = O(n²)
+Space Complexity = O(n)
+
+---
+
+## Key Learning
+
+Prefix Sum stores running totals (cumulative sums).
+
+Instead of recalculating the sum of every subarray, we reuse previously computed information.
+
+This is a common optimization technique known as preprocessing.
