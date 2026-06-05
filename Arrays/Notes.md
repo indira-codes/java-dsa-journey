@@ -650,3 +650,103 @@ Prefix Sum stores running totals (cumulative sums).
 Instead of recalculating the sum of every subarray, we reuse previously computed information.
 
 This is a common optimization technique known as preprocessing.
+
+
+******
+# Kadane's Algorithm (Basic Version)
+
+## Goal
+
+Find the Maximum Subarray Sum in O(n) time.
+
+---
+
+## Core Idea
+
+If the current sum becomes negative, carrying it forward will only reduce future sums.
+
+Therefore:
+
+Discard negative current sums and start fresh.
+
+Example:
+
+Current Sum = -5
+
+Next Element = 4
+
+Continue:
+-5 + 4 = -1
+
+Start Fresh:
+4
+
+Since 4 > -1, starting fresh is better.
+
+---
+
+## Algorithm
+
+1. Initialize:
+   currentSum = 0
+   maxSum = -∞
+
+2. Traverse the array.
+
+3. Add current element to currentSum.
+
+4. If currentSum becomes negative:
+   reset currentSum to 0.
+
+5. Update maxSum.
+
+6. Print maxSum.
+
+---
+
+## Pseudocode
+
+currentSum = 0
+maxSum = -∞
+
+For each element
+
+```
+currentSum += element
+
+If currentSum < 0
+    currentSum = 0
+
+maxSum = max(maxSum, currentSum)
+```
+
+Print maxSum
+
+---
+
+## Complexity
+
+Time Complexity: O(n)
+
+Space Complexity: O(1)
+
+---
+
+## Limitation
+
+Fails for all-negative arrays.
+
+Example:
+
+[-2,-3,-1,-4]
+
+Expected:
+-1
+
+Output:
+0
+
+Reason:
+Negative sums are always reset to zero.
+
+This limitation is fixed in Improved Kadane's Algorithm.
