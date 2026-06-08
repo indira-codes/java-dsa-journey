@@ -966,3 +966,22 @@ rightMax[]
 * Use auxiliary arrays to precompute maximum heights.
 * Water Level = `min(leftMax, rightMax)`.
 * Overall optimized solution runs in `O(n)` time.
+
+
+*********
+Goal:
+
+Find the minimum stock price seen so far
+and calculate the profit if we sell today.
+
+At every day:
+
+1. Keep track of the cheapest stock price.
+2. Calculate profit by selling today.
+3. Update maximum profit if needed.
+
+This allows us to solve the problem
+in a single traversal of the array.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
